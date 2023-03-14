@@ -10,6 +10,20 @@ def button_click(number):
     e.delete(0, END)
     e.insert(0, str(current) + str(number))
 
+def clear_numbers():
+    e.delete(0, END)
+
+def add_number():
+    first_num = e.get()
+    global f_num
+    f_num = int(first_num)
+    e.delete(0, END)
+
+def equal():
+    second_num = e.get()
+    e.delete(0, END)
+    e.insert(0, f_num + int(second_num))
+
 # define buttons
 
 button_1 = Button(root, text="1", padx=40, pady=20, command=lambda: button_click(1))
@@ -23,9 +37,9 @@ button_8 = Button(root, text="8", padx=40, pady=20, command=lambda: button_click
 button_9 = Button(root, text="9", padx=40, pady=20, command=lambda: button_click(9))
 button_0 = Button(root, text="0", padx=40, pady=20, command=lambda: button_click(0))
 
-button_add = Button(root, text="+", padx=39, pady=20, command=lambda: button_click())
-button_equal = Button(root, text="=", padx=91, pady=20, command=lambda: button_click())
-button_clear = Button(root, text="Clear", padx=79, pady=20, command=lambda: button_click())
+button_add = Button(root, text="+", padx=39, pady=20, command=add_number)
+button_equal = Button(root, text="=", padx=91, pady=20, command=equal)
+button_clear = Button(root, text="Clear", padx=79, pady=20, command=clear_numbers)
 
 
 # put the buttons on screen
